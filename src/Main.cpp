@@ -1,5 +1,5 @@
 /*
- * A needlessly complicated OpenGL animation of rolling cubes.
+ * A needlessly complicated OpenGL animation of bouncing cubes.
  */
 
 #include <iostream>
