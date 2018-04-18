@@ -133,38 +133,38 @@ void Cube::draw(glm::mat4 projection, glm::mat4 view, GLuint vertexBuffer, GLuin
 
 glm::mat4 Cube::scale(double size)
 {
-	return { { size, 0,	  0,	0 },
-			 { 0,	size, 0,	0 },
-			 { 0,	0,	  size, 0 },
-			 { 0,	0,	  0,	1 } };
+	return { { size, 0,    0,    0 },
+		 { 0,	 size, 0,    0 },
+		 { 0,	 0,    size, 0 },
+		 { 0,	 0,    0,    1 } };
 }
 
 glm::mat4 Cube::translate(double x, double y, double z)
 {
 	glm::mat4 transpose = { { 1, 0, 0, x },
-							{ 0, 1,	0, y },
-							{ 0, 0, 1, z },
-							{ 0, 0, 0, 1 } };
+				{ 0, 1,	0, y },
+				{ 0, 0, 1, z },
+				{ 0, 0, 0, 1 } };
 
 	return glm::transpose(transpose); //OpenGL expects column-major ordering
 }
 
 glm::mat4 Cube::rotate(double xAxis, double yAxis, double zAxis) //theta, phi variables are less practical?
 {
-	glm::mat4 xSpin = { { 1,		   0,			0,			0 },
-						{ 0,		   cos(xAxis),	sin(xAxis), 0 },
-						{ 0,		   -sin(xAxis),	cos(xAxis), 0 },
-						{ 0,		   0,			0,			1 } };
+	glm::mat4 xSpin = { { 1,	   0,		0,	    0 },
+			    { 0,	   cos(xAxis),	sin(xAxis), 0 },
+			    { 0,	   -sin(xAxis),	cos(xAxis), 0 },
+			    { 0,	   0,		0,	    1 } };
 
-	glm::mat4 ySpin = { { cos(yAxis),  0,			sin(yAxis), 0 },
-						{ 0,		   1,			0,			0 },
-						{ -sin(yAxis), 0,			cos(yAxis), 0 },
-						{ 0,		   0,			0,			1 } };
+	glm::mat4 ySpin = { { cos(yAxis),  0,		sin(yAxis), 0 },
+			    { 0,	   1,		0,	    0 },
+			    { -sin(yAxis), 0,		cos(yAxis), 0 },
+			    { 0,	   0,		0,	    1 } };
 
-	glm::mat4 zSpin = { { cos(zAxis),  sin(zAxis),	0,			0 },
-						{ -sin(zAxis), cos(zAxis),	0,			0 },
-						{ 0,		   0,			1,			0 },
-						{ 0,		   0,			0,			1 } };
+	glm::mat4 zSpin = { { cos(zAxis),  sin(zAxis),	0,	    0 },
+			    { -sin(zAxis), cos(zAxis),	0,	    0 },
+			    { 0,	   0,		1,	    0 },
+			    { 0,	   0,		0,	    1 } };
 
 	return glm::transpose(xSpin * ySpin * zSpin);
 }
